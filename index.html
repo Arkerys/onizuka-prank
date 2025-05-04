@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
@@ -58,10 +58,12 @@
   <img src="https://media.tenor.com/IvX5iTo95wMAAAAC/onizuka-gto.gif" alt="Onizuka middle finger">
   <img src="image.jpg" alt="Опис картинки" />
 
-  <button class="play-button" onclick="document.getElementById('audio').play()">
+  <!-- Кнопка Play -->
+  <button class="play-button" onclick="playMusic(this)">
     <img src="icon_play.png" alt="Play">
   </button>
 
+  <!-- Аудіо -->
   <audio id="audio" loop>
     <source src="asus-yamete-kudasai.mp3" type="audio/mpeg">
     Ваш браузер не підтримує відтворення аудіо.
@@ -70,5 +72,14 @@
   <footer>
     <p>Правильно, потрібно читати дрібні шрифти. А також, потрібно дивитись відосіки що я кидаю - ШВИДШЕ! А тепер, твій акаунт зламано ❤️</p>
   </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function playMusic(button) {
+      const audio = document.getElementById('audio');
+      audio.play();
+      button.style.display = 'none'; // Зникнення кнопки після натискання
+    }
+  </script>
 </body>
 </html>
