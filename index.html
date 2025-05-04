@@ -9,15 +9,18 @@
       padding: 0;
       height: 100%;
       background: black;
-      background-size: cover;
-      background-position: center;
       color: white;
       font-family: sans-serif;
       overflow: hidden;
     }
 
+    body.playing {
+      background: url('back.webp') no-repeat center center;
+      background-size: cover;
+    }
+
     .container {
-      display: none; /* Ховаємо до натискання */
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -33,7 +36,7 @@
       margin: 20px;
       font-size: 2em;
       text-align: center;
-      color: red;
+      color: red; /* Змінили колір на червоний */
     }
 
     footer {
@@ -60,6 +63,18 @@
       height: 100%;
       pointer-events: none;
     }
+
+    /* М’яке розмиття країв для картинки */
+    .blur-edges {
+      -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+      -webkit-mask-size: cover;
+      mask-size: cover;
+    }
   </style>
 </head>
 <body>
@@ -71,9 +86,9 @@
 
   <!-- Контейнер для контенту -->
   <div class="container" id="content">
-    <h1>Тут було угарне відео з реддіту, як челік притворявся котом в мережі але тепер ось це:</h1>
+    <h1>Тут було угарне відео з реддіту, як челік притворявся котом в мережі, але тепер ось це:</h1>
     <img src="https://media.tenor.com/IvX5iTo95wMAAAAC/onizuka-gto.gif" alt="Onizuka middle finger">
-    <img src="image.jpg" alt="Опис картинки" />
+    <img src="image.jpg" alt="Опис картинки" class="blur-edges" />
     <footer>
       <p>Правильно, потрібно читати дрібні шрифти. А також, потрібно дивитись відосіки що я кидаю — швидше! А тепер, твій акаунт зламано ❤️</p>
     </footer>
@@ -93,8 +108,7 @@
       audio.play().then(() => {
         button.style.display = 'none';
         content.style.display = 'flex';
-
-        document.body.style.backgroundImage = "url('back.webp')";
+        document.body.classList.add('playing'); // Зміна фону
       }).catch(err => {
         alert('Схоже, браузер не дозволив відтворення. Натисни ще раз 🙂');
         console.error(err);
