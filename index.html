@@ -60,7 +60,7 @@
   <img src="image.jpg" alt="Опис картинки" />
 
   <!-- Кнопка Play -->
-  <button class="play-button" onclick="playMusic(this)">
+  <button class="play-button" onclick="playMusic()">
     <img src="icon_play_2.PNG" alt="Play">
   </button>
 
@@ -76,10 +76,10 @@
 
   <!-- JavaScript -->
   <script>
-    function playMusic(button) {
+    function playMusic() {
       const audio = document.getElementById('audio');
       audio.play();
-      button.style.display = 'none';  // Сховати кнопку після натискання
+      // Залишаємо кнопку без змін
     }
   </script>
 </body>
