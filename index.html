@@ -15,9 +15,11 @@
       flex-direction: column;
       color: white;
       font-family: sans-serif;
+      position: relative; /* Для позиціювання кнопки поверх */
     }
     img {
       max-height: 80vh;
+      position: relative;
     }
     h1 {
       margin-top: 20px;
@@ -32,17 +34,22 @@
       text-align: center;
       width: 100%;
     }
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      font-size: 16px;
+    /* Стилі для кнопки Play */
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Центрує кнопку */
+      width: 50px;
+      height: 50px;
+      background-color: transparent;
       border: none;
       cursor: pointer;
-      margin-top: 20px;
+      z-index: 10;
     }
-    button:hover {
-      background-color: #45a049;
+    .play-button img {
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
@@ -50,13 +57,18 @@
   <h1>Тут було угарне відео з реддіту, як челік притворявся котом в мережі але тепер ось це:</h1>
   <img src="https://media.tenor.com/IvX5iTo95wMAAAAC/onizuka-gto.gif" alt="Onizuka middle finger">
   <img src="image.jpg" alt="Опис картинки" />
-  <!-- Кнопка для запуску музики -->
-  <button onclick="document.getElementById('audio').play()">Play Music</button>
-  <!-- Аудіо елемент з id -->
+
+  <!-- Кнопка відтворення з піктограмою -->
+  <button class="play-button" onclick="document.getElementById('audio').play()">
+    <img src="play-icon.png" alt="Play">
+  </button>
+
+  <!-- Аудіо елемент -->
   <audio id="audio" loop>
     <source src="asus-yamete-kudasai.mp3" type="audio/mpeg">
     Ваш браузер не підтримує відтворення аудіо.
   </audio>
+
   <footer>
     <p>Правильно, потрібно читати дрібні шрифти. А також, потрібно дивитись відосіки що я кидаю - ШВИДШЕ! А тепер, твій акаунт зламано ❤️</p>
   </footer>
