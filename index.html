@@ -15,7 +15,7 @@
       flex-direction: column;
       color: white;
       font-family: sans-serif;
-      position: relative; /* Для позиціювання кнопки поверх */
+      position: relative;
     }
     img {
       max-height: 80vh;
@@ -34,12 +34,12 @@
       text-align: center;
       width: 100%;
     }
-    /* Стилі для кнопки Play */
+    /* Кнопка Play */
     .play-button {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); /* Центрує кнопку */
+      transform: translate(-50%, -50%);
       width: 50px;
       height: 50px;
       background-color: transparent;
@@ -55,13 +55,16 @@
 </head>
 <body>
   <h1>Тут було угарне відео з реддіту, як челік притворявся котом в мережі але тепер ось це:</h1>
+  
   <img src="https://media.tenor.com/IvX5iTo95wMAAAAC/onizuka-gto.gif" alt="Onizuka middle finger">
   <img src="image.jpg" alt="Опис картинки" />
 
-  <button class="play-button" onclick="document.getElementById('audio').play()">
+  <!-- Кнопка Play -->
+  <button class="play-button" onclick="playMusic(this)">
     <img src="icon_play.PNG" alt="Play">
   </button>
 
+  <!-- Аудіо -->
   <audio id="audio" loop>
     <source src="asus-yamete-kudasai.mp3" type="audio/mpeg">
     Ваш браузер не підтримує відтворення аудіо.
@@ -70,5 +73,14 @@
   <footer>
     <p>Правильно, потрібно читати дрібні шрифти. А також, потрібно дивитись відосіки що я кидаю - ШВИДШЕ! А тепер, твій акаунт зламано ❤️</p>
   </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function playMusic(button) {
+      const audio = document.getElementById('audio');
+      audio.play();
+      button.style.display = 'none';
+    }
+  </script>
 </body>
 </html>
