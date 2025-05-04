@@ -9,44 +9,49 @@
       padding: 0;
       height: 100%;
       background: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
       color: white;
       font-family: sans-serif;
-      position: relative;
-      touch-action: manipulation; /* адаптація до мобільного дотику */
+      overflow: hidden;
     }
-    img {
-      max-height: 80vh;
-      position: relative;
+
+    .container {
+      display: none; /* Ховаємо до натискання */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
     }
-    h1 {
+
+    .container img {
+      max-height: 60vh;
       margin-top: 20px;
+    }
+
+    h1 {
+      margin: 20px;
       font-size: 2em;
       text-align: center;
     }
+
     footer {
       font-size: 0.6em;
-      position: absolute;
-      bottom: 10px;
-      color: white;
+      margin-top: 20px;
       text-align: center;
-      width: 100%;
     }
+
     .play-button {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
-      background-color: transparent;
+      width: 80px;
+      height: 80px;
+      background: transparent;
       border: none;
       cursor: pointer;
       z-index: 10;
     }
+
     .play-button img {
       width: 100%;
       height: 100%;
@@ -55,16 +60,21 @@
   </style>
 </head>
 <body>
-  <h1>Тут було угарне відео з реддіту, як челік притворявся котом в мережі але тепер ось це:</h1>
 
-  <!-- Головне зображення -->
-  <img src="https://media.tenor.com/IvX5iTo95wMAAAAC/onizuka-gto.gif" alt="Onizuka middle finger">
-  <img src="image.jpg" alt="Опис картинки" />
-
-  <!-- Кнопка відтворення -->
-  <button class="play-button" onclick="playMusic(this)">
-    <img src="icon_play_4.png" alt="Play">
+  <!-- Кнопка Play -->
+  <button class="play-button" onclick="startPrank(this)">
+    <img src="icon_play.png" alt="Play">
   </button>
+
+  <!-- Контейнер для контенту -->
+  <div class="container" id="content">
+    <h1>Тут було угарне відео з реддіту, як челік притворявся котом в мережі але тепер ось це:</h1>
+    <img src="https://media.tenor.com/IvX5iTo95wMAAAAC/onizuka-gto.gif" alt="Onizuka middle finger">
+    <img src="image.jpg" alt="Опис картинки" />
+    <footer>
+      <p>Правильно, потрібно читати дрібні шрифти. А також, потрібно дивитись відосіки що я кидаю — ШВИДШЕ! А тепер, твій акаунт зламано ❤️</p>
+    </footer>
+  </div>
 
   <!-- Аудіо -->
   <audio id="audio" loop>
@@ -72,18 +82,17 @@
     Ваш браузер не підтримує відтворення аудіо.
   </audio>
 
-  <footer>
-    <p>Правильно, потрібно читати дрібні шрифти. А також, потрібно дивитись відосіки що я кидаю — ШВИДШЕ! А тепер, твій акаунт зламано ❤️</p>
-  </footer>
-
   <script>
-    function playMusic(button) {
+    function startPrank(button) {
       const audio = document.getElementById('audio');
+      const content = document.getElementById('content');
+
       audio.play().then(() => {
-        button.style.display = 'none';
-      }).catch(error => {
-        console.error('Відтворення не вдалося:', error);
-        alert('Натисни ще раз, щоб увімкнути звук 🙂');
+        button.style.display = 'none';     // Ховаємо кнопку
+        content.style.display = 'flex';    // Показуємо все інше
+      }).catch(err => {
+        alert('Схоже, браузер не дозволив відтворення. Натисни ще раз 🙂');
+        console.error(err);
       });
     }
   </script>
