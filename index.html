@@ -9,6 +9,8 @@
       padding: 0;
       height: 100%;
       background: black;
+      background-size: cover;
+      background-position: center;
       color: white;
       font-family: sans-serif;
       overflow: hidden;
@@ -88,8 +90,10 @@
       const content = document.getElementById('content');
 
       audio.play().then(() => {
-        button.style.display = 'none';     // Ховаємо кнопку
-        content.style.display = 'flex';    // Показуємо все інше
+        button.style.display = 'none';
+        content.style.display = 'flex';
+
+        document.body.style.backgroundImage = "url('back.webp')";
       }).catch(err => {
         alert('Схоже, браузер не дозволив відтворення. Натисни ще раз 🙂');
         console.error(err);
