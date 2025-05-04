@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,8 @@
       flex-direction: column;
       color: white;
       font-family: sans-serif;
-      position: relative; /* Для позиціювання кнопки поверх */
+      position: relative;
+      touch-action: manipulation; /* адаптація до мобільного дотику */
     }
     img {
       max-height: 80vh;
@@ -34,14 +35,13 @@
       text-align: center;
       width: 100%;
     }
-    /* Стилі для кнопки Play */
     .play-button {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); /* Центрує кнопку */
-      width: 50px;
-      height: 50px;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
       background-color: transparent;
       border: none;
       cursor: pointer;
@@ -50,15 +50,18 @@
     .play-button img {
       width: 100%;
       height: 100%;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
   <h1>Тут було угарне відео з реддіту, як челік притворявся котом в мережі але тепер ось це:</h1>
+
+  <!-- Головне зображення -->
   <img src="https://media.tenor.com/IvX5iTo95wMAAAAC/onizuka-gto.gif" alt="Onizuka middle finger">
   <img src="image.jpg" alt="Опис картинки" />
 
-  <!-- Кнопка Play -->
+  <!-- Кнопка відтворення -->
   <button class="play-button" onclick="playMusic(this)">
     <img src="icon_play_4.png" alt="Play">
   </button>
@@ -70,15 +73,18 @@
   </audio>
 
   <footer>
-    <p>Правильно, потрібно читати дрібні шрифти. А також, потрібно дивитись відосіки що я кидаю - ШВИДШЕ! А тепер, твій акаунт зламано ❤️</p>
+    <p>Правильно, потрібно читати дрібні шрифти. А також, потрібно дивитись відосіки що я кидаю — ШВИДШЕ! А тепер, твій акаунт зламано ❤️</p>
   </footer>
 
-  <!-- JavaScript -->
   <script>
     function playMusic(button) {
       const audio = document.getElementById('audio');
-      audio.play();
-      button.style.display = 'none'; // Зникнення кнопки після натискання
+      audio.play().then(() => {
+        button.style.display = 'none';
+      }).catch(error => {
+        console.error('Відтворення не вдалося:', error);
+        alert('Натисни ще раз, щоб увімкнути звук 🙂');
+      });
     }
   </script>
 </body>
